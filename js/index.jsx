@@ -38,15 +38,19 @@ function getGif (tag) {
 function renderGif (url) {
   var Page = React.createClass({
     displayName: 'Gif',
+    reload: function() {
+      window.location.reload();
+    },
     render: function () {
       var style = {
         position: 'fixed',
         top: 0,
         left: 0,
         minWidth: '100%',
-        minHeight: '100%'
+        minHeight: '100%',
+        cursor: 'pointer'
       }
-      return <img src={url} style={style} />
+      return <img src={url} style={style} onClick={this.reload} />
     }
   })
   React.render(<Page/>, document.querySelector('#app'))
